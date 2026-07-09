@@ -1,0 +1,17 @@
+deep learning is based on artificial neural network with representation learning
+representation learning -> hume koi bhe extra feature extraction karne ki need nhi hai, this all happens internally
+neural network-> deep learning algo uses multilayer to extract higher level feature
+
+=> deep learning needs large amount of data -> it iss data hungry
+=> deeep learning is hardware dependent -> in deep learning large amount of matrix multiplication performed so it needs GPU
+=> if we work on cpu -> it will be slow, we need powerful GPUs
+=> high training time then ML, but prediction time is fast
+=> deep learning fails in interpretability -> in answering why
+
+
+LOSS FUNCTION
+loss finction is basicallay a mathematical function -> which basically tells how good our ML model is working
+=> in case of perceptron loss function is a mathematical function of (W1, W2, b)
+=> for every value of (W1, W2, b), this gives a number that will tell the error in the model
+
+-> perceptron can only work on linear data

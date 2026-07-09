@@ -1,0 +1,4 @@
+Problem with perceptron -> it can only work on linearly separable model, it cannot work on non-linearly separable data
+-> so we have make a model that will work on non-linearly separable data, so we will do this by using multiple perceptrons
+# jiytna line se door jaoge probability badega
+
