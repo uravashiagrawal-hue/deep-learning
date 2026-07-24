@@ -1,0 +1,43 @@
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame([[8,8,4],[7,9,5],[6,10,6],[5,12,7]], columns = ['cgpa','profit_score','lpa'])
+print(df)
+
+def initialize_parameters(layer_dims):
+	np.random.seed(3)
+	parameters = {}
+	L= len(layer_dims)
+
+	for l in range(1,L):
+		parameters['W' + str(1)] = np.ones((layer_dims[l-1], layer_dims[1]))*0.1
+		parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
+
+	return parameters
+
+initialize_parameters([2,2,1])
+
+def linear_forward(A_prev, W, b):
+  Z = np.dot(W.T, A_prev) + b
+  return Z
+
+# Forward Prop
+def L_layer_forward(X, parameters):
+
+  A = X
+  L = len(parameters) // 2                  # number of layers in the neural network
+
+  for l in range(1, L+1):
+    A_prev = A
+    Wl = parameters['W' + str(l)]
+    bl = parameters['b' + str(l)]
+    #print("A"+str(l-1)+": ", A_prev)
+    #print("W"+str(l)+": ", Wl)
+    #print("b"+str(l)+": ", bl)
+    #print("--"*20)
+
+    A = linear_forward(A_prev, Wl, bl)
+    #print("A"+str(l)+": ", A)
+    #print("**"*20)
+
+  return A,A_prev
