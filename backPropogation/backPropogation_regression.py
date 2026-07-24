@@ -103,3 +103,28 @@ y_hat = y_hat[0][0]
 update_parameters(parameters,y,y_hat,A1,X)
 
 parameters
+
+# epochs implementation
+
+for i in range(epochs):
+
+  Loss = []
+
+  for j in range(df.shape[0]):
+
+    X = df[['cgpa', 'profile_score']].values[j].reshape(2,1) # Shape(no of features, no. of training example)
+    y = df[['lpa']].values[j][0]
+
+    # Parameter initialization
+
+
+    y_hat,A1 = L_layer_forward(X,parameters)
+    y_hat = y_hat[0][0]
+
+    update_parameters(parameters,y,y_hat,A1,X)
+
+    Loss.append((y-y_hat)**2)
+
+  print('Epoch - ',i+1,'Loss - ',np.array(Loss).mean())
+
+parameters
