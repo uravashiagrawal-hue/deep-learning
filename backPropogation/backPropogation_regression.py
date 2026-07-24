@@ -10,9 +10,8 @@ def initialize_parameters(layer_dims):
 	L= len(layer_dims)
 
 	for l in range(1,L):
-		parameters['W' + str(1)] = np.ones((layer_dims[l-1], layer_dims[1]))*0.1
+		parameters['W' + str(l)] = np.ones((layer_dims[l-1], layer_dims[1]))*0.1
 		parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
-
 	return parameters
 
 print(initialize_parameters([2,2,1]))
@@ -47,6 +46,9 @@ y= df[['lpa']].values[0][0]
 
 parameters = initialize_parameters([2,2,1])
 
+print(parameters.keys())
+print(parameters)
+
 y_hat, A1 = L_layer_forward(X, parameters)
 
 print(y_hat)
@@ -67,4 +69,37 @@ def update_parameters(parameters,y,y_hat,A1,X):
   parameters['W1'][1][1] = parameters['W1'][1][1] + (0.001 * 2 * (y - y_hat)*parameters['W2'][1][0]*X[1][0])
   parameters['b1'][1][0] = parameters['b1'][1][0] + (0.001 * 2 * (y - y_hat)*parameters['W2'][1][0])
 
-  
+X = df[['cgpa', 'profit_score']].values[0].reshape(2,1) # Shape(no of features, no. of training example)
+y = df[['lpa']].values[0][0]
+
+# Parameter initialization
+parameters = initialize_parameters([2,2,1])
+
+y_hat,A1 = (L_layer_forward(X,parameters))
+y_hat = y_hat[0][0]
+
+update_parameters(parameters,y,y_hat,A1,X)
+
+parameters
+
+# for 2nd student
+X = df[['cgpa', 'profile_score']].values[2].reshape(2,1) # Shape(no of features, no. of training exaplme)
+y = df[['lpa']].values[2][0]
+
+y_hat,A1 = L_layer_forward(X,parameters)
+y_hat = y_hat[0][0]
+
+update_parameters(parameters,y,y_hat,A1,X)
+
+parameters
+
+# for 3rd student
+X = df[['cgpa', 'profile_score']].values[3].reshape(2,1) # Shape(no of features, no. of training exaplme)
+y = df[['lpa']].values[3][0]
+
+y_hat,A1 = L_layer_forward(X,parameters)
+y_hat = y_hat[0][0]
+
+update_parameters(parameters,y,y_hat,A1,X)
+
+parameters
