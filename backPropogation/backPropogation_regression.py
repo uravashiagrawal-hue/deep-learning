@@ -83,7 +83,7 @@ update_parameters(parameters,y,y_hat,A1,X)
 parameters
 
 # for 2nd student
-X = df[['cgpa', 'profile_score']].values[2].reshape(2,1) # Shape(no of features, no. of training exaplme)
+X = df[['cgpa', 'profit_score']].values[2].reshape(2,1) # Shape(no of features, no. of training exaplme)
 y = df[['lpa']].values[2][0]
 
 y_hat,A1 = L_layer_forward(X,parameters)
@@ -94,7 +94,7 @@ update_parameters(parameters,y,y_hat,A1,X)
 parameters
 
 # for 3rd student
-X = df[['cgpa', 'profile_score']].values[3].reshape(2,1) # Shape(no of features, no. of training exaplme)
+X = df[['cgpa', 'profit_score']].values[3].reshape(2,1) # Shape(no of features, no. of training exaplme)
 y = df[['lpa']].values[3][0]
 
 y_hat,A1 = L_layer_forward(X,parameters)
@@ -105,6 +105,8 @@ update_parameters(parameters,y,y_hat,A1,X)
 parameters
 
 # epochs implementation
+parameters = initialize_parameters([2,2,1])
+epochs = 5
 
 for i in range(epochs):
 
@@ -112,7 +114,7 @@ for i in range(epochs):
 
   for j in range(df.shape[0]):
 
-    X = df[['cgpa', 'profile_score']].values[j].reshape(2,1) # Shape(no of features, no. of training example)
+    X = df[['cgpa', 'profit_score']].values[j].reshape(2,1) # Shape(no of features, no. of training example)
     y = df[['lpa']].values[j][0]
 
     # Parameter initialization
