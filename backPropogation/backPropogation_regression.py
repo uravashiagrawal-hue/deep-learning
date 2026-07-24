@@ -15,7 +15,7 @@ def initialize_parameters(layer_dims):
 
 	return parameters
 
-initialize_parameters([2,2,1])
+print(initialize_parameters([2,2,1]))
 
 def linear_forward(A_prev, W, b):
   Z = np.dot(W.T, A_prev) + b
@@ -39,5 +39,17 @@ def L_layer_forward(X, parameters):
     A = linear_forward(A_prev, Wl, bl)
     #print("A"+str(l)+": ", A)
     #print("**"*20)
+    return A, A_prev
 
-  return A,A_prev
+X = df[['cgpa','profit_score']].values[0].reshape(2,1)    #shape(no of features, no. of training examples)
+y= df[['lpa']].values[0][0]
+# parameter initialization
+
+parameters = initialize_parameters([2,2,1])
+
+y_hat, A1 = L_layer_forward(X, parameters)
+
+print(y_hat)
+print(A1)
+
+
