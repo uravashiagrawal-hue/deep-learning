@@ -122,4 +122,30 @@ print('Loss for this student - ',-y*np.log(y_hat) - (1-y)*np.log(1-y_hat))
 parameters
 
 
+# epochs implementation
 
+parameters = initialize_parameters([2,2,1])
+epochs = 50
+
+for i in range(epochs):
+
+  Loss = []
+
+  for j in range(df.shape[0]):
+
+    X = df[['cgpa', 'profile_score']].values[j].reshape(2,1) # Shape(no of features, no. of training example)
+    y = df[['placed']].values[j][0]
+
+    # Parameter initialization
+
+
+    y_hat,A1 = L_layer_forward(X,parameters)
+    y_hat = y_hat[0][0]
+
+    update_parameters(parameters,y,y_hat,A1,X)
+
+    Loss.append(-y*np.log(y_hat) - (1-y)*np.log(1-y_hat))
+
+  print('Epoch - ',i+1,'Loss - ',np.array(Loss).mean())
+
+parameters
